@@ -4,6 +4,12 @@ import styled from 'styled-components';
 import {Dimensions} from 'react-native';
 const {width, height} = Dimensions.get('window');
 
+//function for responsive font-size
+const responsiveFontSize = percentage => {
+  const fontSize = (percentage / 100) * Math.min(width, height);
+  return Math.round(fontSize);
+};
+
 export const PageContainer = styled.SafeAreaView`
   width: ${width}px;
   height: ${height}px;
