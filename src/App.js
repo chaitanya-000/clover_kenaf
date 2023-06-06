@@ -1,18 +1,14 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import styled from 'styled-components';
+import {InformativeFooterText} from './styledComponents';
 
 const App = () => {
-  const InformativeFooterText = styled.Text`
-    color: rgba(38, 174, 96, 1);
-    font-weight: 700;
-    align-self: center;
-    font-size: 25px;
-  `;
   return (
     <View>
       <InformativeFooterText>
-        Shifted the app.json to src folder
+        This is to test whether the imports from the styledComponents file in
+        the root directory is working or not
       </InformativeFooterText>
     </View>
   );
