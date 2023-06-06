@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 //Importing Dimensions
 import {Dimensions} from 'react-native';
-const {width, height} = Dimensions.get('window');
+export const {width, height} = Dimensions.get('window');
 
 //function for responsive font-size
 const responsiveFontSize = percentage => {
