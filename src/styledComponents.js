@@ -130,7 +130,7 @@ export const HeaderTwoButtons = styled.View`
 `;
 export const ScrollViewContainer = styled.KeyboardAvoidingView`
   width: 100%;
-  height: 85%;
+  height: 75%;
   /* border: 1px solid black; */
   /* background-color: red; */
 `;
