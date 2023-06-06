@@ -1,47 +1,14 @@
-import {
-  Alert,
-  Pressable,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
-import React, {useState} from 'react';
-import styled from 'styled-components';
-import {InformativeFooterText} from './styledComponents';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import axios from 'axios';
-import {width, height} from './styledComponents';
+import {StyleSheet, View, Text} from 'react-native';
+import React from 'react';
+import useCounterStore from './store';
 
 const App = () => {
-  const [enteredData, setEnteredData] = useState('');
-  const storeData = async () => {
-    try {
-      await AsyncStorage.setItem('value', JSON.stringify(enteredData));
-      alert('data  stored successfully');
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const readData = async () => {
-    try {
-      const value = await AsyncStorage.getItem('value');
-      alert(value);
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-
+  const {count, increment, decrement} = useCounterStore();
   return (
     <View style={styles.container}>
-      <Text onPress={storeData}>Store data</Text>
-      <TextInput
-        style={styles.container_input}
-        onChangeText={value => setEnteredData(value)}
-        clearButtonMode="always"
-      />
-      <Text onPress={readData}>Read data</Text>
-      <Text onPress={() => setEnteredData('')}>reset</Text>
+      <Text>Counter: {count}</Text>
+      <Text onPress={increment}>Increment</Text>
+      <Text onPress={decrement}>Decrement</Text>
     </View>
   );
 };
