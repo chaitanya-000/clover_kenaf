@@ -1,31 +1,28 @@
 import {StyleSheet, View, Text} from 'react-native';
 import React from 'react';
-import useCounterStore from './store';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import PaymentLogs from './screens/PaymentLogs';
+import QuickSale from './screens/QuickSale';
+import Refund from './screens/Refund';
+import BankDetails from './screens/BankDetails';
+import ProfileUpdate from './screens/ProfileUpdate';
+import Payment from './screens/Payment';
 
 const App = () => {
-  const {count, increment, decrement} = useCounterStore();
+  const Stack = createNativeStackNavigator();
   return (
-    <View style={styles.container}>
-      <Text>Counter: {count}</Text>
-      <Text onPress={increment}>Increment</Text>
-      <Text onPress={decrement}>Decrement</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Payment" component={Payment} />
+        <Stack.Screen name="QuickSale" component={QuickSale} />
+        <Stack.Screen name="PaymentLogs" component={PaymentLogs} />
+        <Stack.Screen name="Refund" component={Refund} />
+        <Stack.Screen name="BankDetails" component={BankDetails} />
+        <Stack.Screen name="ProfileUpdate" component={ProfileUpdate} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
 export default App;
-
-const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: '100%',
-    alignSelf: 'center',
-    justifyContent: 'center',
-    // backgroundColor: 'red',
-  },
-  container_input: {
-    width: '40%',
-    height: '10%',
-    borderWidth: 3,
-  },
-});

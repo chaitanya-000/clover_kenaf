@@ -84,33 +84,33 @@ const QuickSale = ({navigation}) => {
       });
   };
 
-  useEffect(() => {
-    const getTillId = async () => {
-      try {
-        const value = await AsyncStorage.getItem('tID');
-        if (value !== null) {
-          console.log(value);
-          setTID(value);
-        } else {
-          Alert.alert('Link the till first', '', [
-            {
-              text: 'Ok',
-              onPress: () => navigation.navigate('Links'),
-            },
-          ]);
-        }
-      } catch (e) {
-        console.log(e.message);
-      }
-    };
-    getTillId();
-  }, [tID]);
+  // useEffect(() => {
+  //   const getTillId = async () => {
+  //     try {
+  //       const value = await AsyncStorage.getItem('tID');
+  //       if (value !== null) {
+  //         console.log(value);
+  //         setTID(value);
+  //       } else {
+  //         Alert.alert('Link the till first', '', [
+  //           {
+  //             text: 'Ok',
+  //             onPress: () => navigation.navigate('Links'),
+  //           },
+  //         ]);
+  //       }
+  //     } catch (e) {
+  //       console.log(e.message);
+  //     }
+  //   };
+  //   getTillId();
+  // }, [tID]);
   return (
     <KeyboardAvoidingView behavior="height">
       {loading && <LoadingSpinner loading={loading} />}
       <PageContainer>
         <Header>
-          <BackButton>
+          <BackButton onPress={() => navigation.navigate('Payment')}>
             <Icon name="md-arrow-back" size={25} color="white" />
           </BackButton>
         </Header>
